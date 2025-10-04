@@ -9,7 +9,12 @@ import { Label } from "@/components/ui/label";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 const privileges = [
-  { name: "Барон", price: 10, color: "from-gray-600 to-gray-800" },
+  { 
+    name: "Барон", 
+    price: 10, 
+    color: "from-gray-600 to-gray-800",
+    description: "⚕ Префикс в чате и табе: [Барон] ВашНик\n› /kit Барон ⇨ Получить набор Барона\n› /salary ⇨ Получить зарплату\n› /crawl ⇨ Сменить позу: красться"
+  },
   { name: "Страж", price: 16, color: "from-green-600 to-green-800" },
   { name: "Герой", price: 24, color: "from-blue-600 to-blue-800" },
   { name: "Аспид", price: 56, color: "from-purple-600 to-purple-800" },
@@ -375,20 +380,26 @@ export default function Index() {
                     
                     <div className="bg-black/40 border border-primary/30 rounded-lg p-4">
                       <h4 className="text-white font-bold mb-2">Что входит:</h4>
-                      <ul className="space-y-2 text-gray-300 text-sm">
-                        <li className="flex items-center gap-2">
-                          <Icon name="Check" size={16} className="text-green-500" />
-                          Уникальный префикс в чате
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <Icon name="Check" size={16} className="text-green-500" />
-                          Доступ к эксклюзивным командам
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <Icon name="Check" size={16} className="text-green-500" />
-                          Особые возможности на сервере
-                        </li>
-                      </ul>
+                      {privilege.description ? (
+                        <div className="text-gray-300 text-sm whitespace-pre-line leading-relaxed">
+                          {privilege.description}
+                        </div>
+                      ) : (
+                        <ul className="space-y-2 text-gray-300 text-sm">
+                          <li className="flex items-center gap-2">
+                            <Icon name="Check" size={16} className="text-green-500" />
+                            Уникальный префикс в чате
+                          </li>
+                          <li className="flex items-center gap-2">
+                            <Icon name="Check" size={16} className="text-green-500" />
+                            Доступ к эксклюзивным командам
+                          </li>
+                          <li className="flex items-center gap-2">
+                            <Icon name="Check" size={16} className="text-green-500" />
+                            Особые возможности на сервере
+                          </li>
+                        </ul>
+                      )}
                     </div>
                     
                     <Button 
