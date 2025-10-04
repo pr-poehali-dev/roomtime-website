@@ -553,7 +553,7 @@ export default function Index() {
               СОЗДАТЕЛИ СЕРВЕРА
             </h2>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
               {creators.map((creator) => (
                 <div 
                   key={creator}
@@ -563,6 +563,17 @@ export default function Index() {
                   <p className="text-2xl font-bold text-white">{creator}</p>
                 </div>
               ))}
+            </div>
+            
+            <h3 className="text-3xl font-black text-center text-white mb-6 minecraft-text">
+              БЕТА ТЕСТЕРЫ
+            </h3>
+            
+            <div className="flex justify-center">
+              <div className="bg-gradient-to-br from-cyan-600/20 to-cyan-600/5 border-2 border-cyan-500/40 rounded-lg p-6 text-center hover:scale-105 transition-transform">
+                <Icon name="TestTube" size={48} className="text-cyan-400 mx-auto mb-4" />
+                <p className="text-2xl font-bold text-white">Kristallik_mal</p>
+              </div>
             </div>
           </Card>
         </section>
