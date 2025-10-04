@@ -33,7 +33,12 @@ const privileges = [
     color: "from-purple-600 to-purple-800",
     description: "⚕ Префикс в чате и табе: [Аспид] ВашНик\n› /kit Аспид ⇨ Получить набор Аспида\n› /clear ⇨ Очистить инвентарь\n› /feed ⇨ Восстановить голод\n› /heal ⇨ Восстановить здоровье\n› /me ⇨ Написать в чат Реакции"
   },
-  { name: "Сквид", price: 69, color: "from-cyan-600 to-cyan-800" },
+  { 
+    name: "Сквид", 
+    price: 69, 
+    color: "from-cyan-600 to-cyan-800",
+    description: "⚕ Префикс в чате и табе: [Сквид] ВашНик\n› /kit Сквид ⇨ Получить набор Сквида\n› /back ⇨ Вернуться на место смерти\n› /ec ⇨ Открыть Эндер Сундук\n› /wbench ⇨ Открыть портативный Верстак\n› /ad ⇨ Написать в чат Рекламы\n› /buy ⇨ Написать в чат Покупки\n› /sell ⇨ Написать в чат Продажи\n› /name ⇨ Изменить название предмета"
+  },
   { name: "Глава", price: 87, color: "from-indigo-600 to-indigo-800" },
   { name: "Элита", price: 149, color: "from-pink-600 to-pink-800" },
   { name: "Титан", price: 239, color: "from-orange-600 to-orange-800" },
