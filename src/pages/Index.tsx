@@ -488,6 +488,33 @@ export default function Index() {
           </div>
         </section>
 
+        <section className="container mx-auto px-4 py-16">
+          <Card className="bg-gradient-to-br from-yellow-600/20 to-amber-600/20 border-2 border-yellow-500/40 max-w-4xl mx-auto p-8 text-center">
+            <div className="flex items-center justify-center gap-4 mb-4">
+              <Icon name="Coins" size={48} className="text-yellow-400" />
+              <h2 className="text-4xl font-black text-white minecraft-text">
+                ТОКЕНЫ
+              </h2>
+            </div>
+            <p className="text-6xl font-black text-yellow-400 minecraft-text mb-4">
+              1 ТОКЕН = 1₽
+            </p>
+            <p className="text-gray-300 text-lg">
+              Купи токены и используй их для покупки привилегий и других возможностей на сервере!
+            </p>
+            <Button 
+              asChild
+              size="lg"
+              className="mt-6 bg-yellow-500 hover:bg-yellow-600 text-black font-bold text-xl px-8 py-6"
+            >
+              <a href="https://funpay.com/users/16724676/" target="_blank" rel="noopener noreferrer">
+                <Icon name="ShoppingCart" size={24} className="mr-2" />
+                Купить Токены
+              </a>
+            </Button>
+          </Card>
+        </section>
+
         <section id="gallery" className="container mx-auto px-4 py-16">
           <h2 className="text-5xl font-black text-center text-white mb-12 minecraft-text">
             ГАЛЕРЕЯ
