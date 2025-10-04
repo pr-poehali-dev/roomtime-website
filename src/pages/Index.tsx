@@ -25,6 +25,39 @@ const privileges = [
 
 const creators = ["IIoneR", "umQKoKiq", "TukeInside"];
 
+const testimonials = [
+  {
+    name: "Steve_Pro",
+    role: "Герцог",
+    text: "Играю уже полгода, лучший анархический сервер! Администрация всегда на связи, донат не дает преимущества в PvP.",
+    rating: 5
+  },
+  {
+    name: "DiamondKing",
+    role: "Титан",
+    text: "Отличное комьюнити, много активных игроков. Сервер работает стабильно 24/7, лагов почти нет!",
+    rating: 5
+  },
+  {
+    name: "CreeperHunter",
+    role: "Элита",
+    text: "Крутые ивенты и конкурсы каждую неделю. Привилегии стоят своих денег, много полезных команд.",
+    rating: 5
+  },
+  {
+    name: "RedstoneWizard",
+    role: "Князь",
+    text: "Сервер для настоящих фанатов Minecraft! Анархия в чистом виде, но с адекватными правилами.",
+    rating: 4
+  }
+];
+
+const screenshots = [
+  { url: "/img/003e44b6-6b07-46b2-a3a4-4a3ea9d77397.jpg", title: "Эпичные постройки" },
+  { url: "/img/ae746d93-bffb-47c0-b5c3-ae76d10bb629.jpg", title: "PvP сражения" },
+  { url: "/img/6e7b201d-a3e9-4382-8d07-b1f8965a17c8.jpg", title: "Огромный мир" }
+];
+
 const rules = [
   {
     title: "ОСНОВНЫЕ ПРАВИЛА",
@@ -268,6 +301,65 @@ export default function Index() {
                   </div>
                 </DialogContent>
               </Dialog>
+            ))}
+          </div>
+        </section>
+
+        <section id="gallery" className="container mx-auto px-4 py-16">
+          <h2 className="text-5xl font-black text-center text-white mb-12 minecraft-text">
+            ГАЛЕРЕЯ
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto mb-8">
+            {screenshots.map((screenshot, index) => (
+              <Card 
+                key={index}
+                className="bg-black/60 backdrop-blur-md border-primary/30 overflow-hidden hover:scale-105 transition-transform animate-fade-in"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="aspect-video relative overflow-hidden">
+                  <img 
+                    src={screenshot.url} 
+                    alt={screenshot.title}
+                    className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                  />
+                </div>
+                <div className="p-4">
+                  <p className="text-white font-bold text-center">{screenshot.title}</p>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        <section id="testimonials" className="container mx-auto px-4 py-16">
+          <h2 className="text-5xl font-black text-center text-white mb-12 minecraft-text">
+            ОТЗЫВЫ ИГРОКОВ
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+            {testimonials.map((testimonial, index) => (
+              <Card 
+                key={index}
+                className="bg-black/60 backdrop-blur-md border-primary/30 p-6 hover:border-primary/60 transition-all animate-slide-up"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="bg-gradient-to-br from-primary/30 to-primary/10 p-3 rounded-full">
+                    <Icon name="User" size={32} className="text-primary" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-white">{testimonial.name}</h3>
+                    <p className="text-sm text-primary font-semibold">{testimonial.role}</p>
+                    <div className="flex gap-1 mt-1">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <Icon key={i} name="Star" size={16} className="text-yellow-400 fill-yellow-400" />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                <p className="text-gray-300 italic">"{testimonial.text}"</p>
+              </Card>
             ))}
           </div>
         </section>
