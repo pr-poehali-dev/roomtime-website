@@ -81,7 +81,12 @@ const privileges = [
     color: "from-emerald-500 to-emerald-800",
     description: "⚕ Префикс в чате и табе: [Спонсор] ВашНик\n› /kit Спонсор ⇨ Получить набор Спонсора\n› /зарплата ⇨ Получить зарплату\n› /exp ⇨ Получить бесплатный опыт\n\nПрочее:\nВход на заполненный сервер\nНет задержки телепортации\nТочек домов: 15\nРегионов (Анка): 20 блоков\nСлотов на Аукционе: 20\n✔ Возможности привилегии ниже"
   },
-  { name: "Мажор", price: 2650, color: "from-rose-500 to-rose-800" },
+  { 
+    name: "Мажор", 
+    price: 2650, 
+    color: "from-rose-500 to-rose-800",
+    description: "Все права стажера +\n› revise start - revise stop\n› tempban (строго по правилам)\n› tempmute (строго по правилам)\n› Прямая связь с создателем"
+  },
 ];
 
 const creators = ["IIoneR", "umQKoKiq", "TukeInside"];
