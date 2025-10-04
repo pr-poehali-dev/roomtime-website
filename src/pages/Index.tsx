@@ -1,7 +1,11 @@
+import { useState, useEffect } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogDescription } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 const privileges = [
   { name: "Барон", price: 10, color: "from-gray-600 to-gray-800" },
@@ -82,6 +86,20 @@ const rules = [
 ];
 
 export default function Index() {
+  const [onlinePlayers, setOnlinePlayers] = useState(42);
+  const [maxPlayers] = useState(100);
+  const [selectedPrivilege, setSelectedPrivilege] = useState<typeof privileges[0] | null>(null);
+  const [nickname, setNickname] = useState("");
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+    const interval = setInterval(() => {
+      setOnlinePlayers(prev => Math.min(maxPlayers, Math.max(10, prev + Math.floor(Math.random() * 7) - 3)));
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [maxPlayers]);
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#1a1f2c] via-[#2C2C2C] to-[#1a1f2c]">
       <div 
@@ -108,6 +126,26 @@ export default function Index() {
                 RoomTime.gomc.me
               </p>
             </Card>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+              <Card className="bg-black/60 backdrop-blur-md border-green-500/40 p-6 text-center animate-bounce-in">
+                <Icon name="Users" size={32} className="text-green-500 mx-auto mb-2" />
+                <p className="text-4xl font-black text-green-500 minecraft-text">{onlinePlayers}/{maxPlayers}</p>
+                <p className="text-white text-sm mt-2">Игроков онлайн</p>
+              </Card>
+              
+              <Card className="bg-black/60 backdrop-blur-md border-yellow-500/40 p-6 text-center animate-bounce-in" style={{ animationDelay: '0.1s' }}>
+                <Icon name="Zap" size={32} className="text-yellow-500 mx-auto mb-2" />
+                <p className="text-4xl font-black text-yellow-500 minecraft-text">24/7</p>
+                <p className="text-white text-sm mt-2">Сервер работает</p>
+              </Card>
+              
+              <Card className="bg-black/60 backdrop-blur-md border-blue-500/40 p-6 text-center animate-bounce-in" style={{ animationDelay: '0.2s' }}>
+                <Icon name="Trophy" size={32} className="text-blue-500 mx-auto mb-2" />
+                <p className="text-4xl font-black text-blue-500 minecraft-text">TOP</p>
+                <p className="text-white text-sm mt-2">Рейтинг сервера</p>
+              </Card>
+            </div>
 
             <div className="flex flex-wrap gap-4 justify-center">
               <Button 
@@ -142,26 +180,94 @@ export default function Index() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
             {privileges.map((privilege, index) => (
-              <Card 
-                key={privilege.name}
-                className={`bg-gradient-to-br ${privilege.color} border-2 border-white/20 hover:border-white/40 transition-all hover:scale-105 overflow-hidden`}
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-2xl font-bold text-white">
+              <Dialog key={privilege.name}>
+                <DialogTrigger asChild>
+                  <Card 
+                    className={`bg-gradient-to-br ${privilege.color} border-2 border-white/20 hover:border-white/40 transition-all hover:scale-105 overflow-hidden cursor-pointer animate-slide-up`}
+                    style={{ animationDelay: `${index * 0.05}s`, opacity: isVisible ? 1 : 0 }}
+                    onClick={() => setSelectedPrivilege(privilege)}
+                  >
+                    <div className="p-6">
+                      <div className="flex items-center justify-between mb-4">
+                        <h3 className="text-2xl font-bold text-white">
+                          {privilege.name}
+                        </h3>
+                        <Icon name="Crown" size={28} className="text-yellow-300" />
+                      </div>
+                      
+                      <div className="text-right">
+                        <p className="text-4xl font-black text-white minecraft-text">
+                          {privilege.price}₽
+                        </p>
+                      </div>
+                      
+                      <Button className="w-full mt-4 bg-white/20 hover:bg-white/30 text-white border-white/40">
+                        <Icon name="ShoppingCart" size={20} className="mr-2" />
+                        Купить
+                      </Button>
+                    </div>
+                  </Card>
+                </DialogTrigger>
+                <DialogContent className="bg-gradient-to-br from-[#1a1f2c] to-[#2C2C2C] border-primary/30">
+                  <DialogHeader>
+                    <DialogTitle className="text-3xl font-black text-primary minecraft-text">
                       {privilege.name}
-                    </h3>
-                    <Icon name="Crown" size={28} className="text-yellow-300" />
-                  </div>
-                  
-                  <div className="text-right">
-                    <p className="text-4xl font-black text-white minecraft-text">
-                      {privilege.price}₽
+                    </DialogTitle>
+                    <DialogDescription className="text-gray-300">
+                      Приобретение привилегии на сервере RoomTime
+                    </DialogDescription>
+                  </DialogHeader>
+                  <div className="space-y-6 py-4">
+                    <div className="text-center">
+                      <Icon name="Crown" size={64} className="text-yellow-300 mx-auto mb-4" />
+                      <p className="text-5xl font-black text-white minecraft-text">
+                        {privilege.price}₽
+                      </p>
+                    </div>
+                    
+                    <div className="space-y-3">
+                      <Label htmlFor="nickname" className="text-white font-semibold">Ваш никнейм в игре</Label>
+                      <Input 
+                        id="nickname"
+                        placeholder="Введите ваш ник"
+                        value={nickname}
+                        onChange={(e) => setNickname(e.target.value)}
+                        className="bg-black/40 border-primary/30 text-white placeholder:text-gray-500"
+                      />
+                    </div>
+                    
+                    <div className="bg-black/40 border border-primary/30 rounded-lg p-4">
+                      <h4 className="text-white font-bold mb-2">Что входит:</h4>
+                      <ul className="space-y-2 text-gray-300 text-sm">
+                        <li className="flex items-center gap-2">
+                          <Icon name="Check" size={16} className="text-green-500" />
+                          Уникальный префикс в чате
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <Icon name="Check" size={16} className="text-green-500" />
+                          Доступ к эксклюзивным командам
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <Icon name="Check" size={16} className="text-green-500" />
+                          Особые возможности на сервере
+                        </li>
+                      </ul>
+                    </div>
+                    
+                    <Button 
+                      className="w-full bg-primary hover:bg-primary/90 text-white font-bold text-lg py-6"
+                      disabled={!nickname}
+                    >
+                      <Icon name="CreditCard" size={24} className="mr-2" />
+                      Перейти к оплате
+                    </Button>
+                    
+                    <p className="text-xs text-center text-gray-400">
+                      После оплаты привилегия будет активирована в течение 5 минут
                     </p>
                   </div>
-                </div>
-              </Card>
+                </DialogContent>
+              </Dialog>
             ))}
           </div>
         </section>
