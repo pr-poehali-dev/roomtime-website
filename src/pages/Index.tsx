@@ -27,7 +27,12 @@ const privileges = [
     color: "from-blue-600 to-blue-800",
     description: "⚕ Префикс в чате и табе: [Герой] ВашНик\n› /kit Герой ⇨ Получить набор Героя\n› /top ⇨ Телепортация вверх\n› /hat ⇨ Надеть блок на голову"
   },
-  { name: "Аспид", price: 56, color: "from-purple-600 to-purple-800" },
+  { 
+    name: "Аспид", 
+    price: 56, 
+    color: "from-purple-600 to-purple-800",
+    description: "⚕ Префикс в чате и табе: [Аспид] ВашНик\n› /kit Аспид ⇨ Получить набор Аспида\n› /clear ⇨ Очистить инвентарь\n› /feed ⇨ Восстановить голод\n› /heal ⇨ Восстановить здоровье\n› /me ⇨ Написать в чат Реакции"
+  },
   { name: "Сквид", price: 69, color: "from-cyan-600 to-cyan-800" },
   { name: "Глава", price: 87, color: "from-indigo-600 to-indigo-800" },
   { name: "Элита", price: 149, color: "from-pink-600 to-pink-800" },
