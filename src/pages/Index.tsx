@@ -45,7 +45,12 @@ const privileges = [
     color: "from-indigo-600 to-indigo-800",
     description: "⚕ Префикс в чате и табе: [Глава] ВашНик\n› /kit Глава ⇨ Получить набор Главы\n› /salary ⇨ Получить зарплату\n› /bc ⇨ Написать в чат Объявления\n› /ext ⇨ Потушить себя командой\n› /am toggle ⇨ Отключить Авто-сообщения\n› /msgtoggle ⇨ Отключить Личные сообщения\n› /paytoggle ⇨ Отключить получение платежей\n› /tptoggle ⇨ Отключить телепортации\n› /feed Ник ⇨ Покормить игрока\n› /heal Ник ⇨ Вылечить игрока\n› /exp ⇨ Получить бесплатный опыт"
   },
-  { name: "Элита", price: 149, color: "from-pink-600 to-pink-800" },
+  { 
+    name: "Элита", 
+    price: 149, 
+    color: "from-pink-600 to-pink-800",
+    description: "⚕ Префикс в чате и табе: [Элита] ВашНик\n› /kit Элита ⇨ Получить набор Элиты\n› /time ⇨ Установить время\n› /weather ⇨ Установить погоду\n› /loom ⇨ Открыть Ткацкий станок\n› /carttable ⇨ Открыть Стол картографа\n› /msgtoggle ⇨ Отключить Личные сообщения\n› /beezooka ⇨ Выстрельнуть пчелой\n› /kittycannon ⇨ Выстрелить котом\n› /firework ⇨ Настроить феерверк\n› /name ⇨ Изменить назв. предмета цветным"
+  },
   { name: "Титан", price: 239, color: "from-orange-600 to-orange-800" },
   { name: "Принц", price: 329, color: "from-yellow-600 to-yellow-800" },
   { name: "Князь", price: 549, color: "from-red-600 to-red-800" },
