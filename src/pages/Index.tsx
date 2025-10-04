@@ -51,7 +51,12 @@ const privileges = [
     color: "from-pink-600 to-pink-800",
     description: "⚕ Префикс в чате и табе: [Элита] ВашНик\n› /kit Элита ⇨ Получить набор Элиты\n› /time ⇨ Установить время\n› /weather ⇨ Установить погоду\n› /loom ⇨ Открыть Ткацкий станок\n› /carttable ⇨ Открыть Стол картографа\n› /msgtoggle ⇨ Отключить Личные сообщения\n› /beezooka ⇨ Выстрельнуть пчелой\n› /kittycannon ⇨ Выстрелить котом\n› /firework ⇨ Настроить феерверк\n› /name ⇨ Изменить назв. предмета цветным"
   },
-  { name: "Титан", price: 239, color: "from-orange-600 to-orange-800" },
+  { 
+    name: "Титан", 
+    price: 239, 
+    color: "from-orange-600 to-orange-800",
+    description: "⚕ Префикс в чате и табе: [Титан] ВашНик\n› /kit Титан ⇨ Получить набор Титана\n› /jump ⇨ Телепортация на блок взгляда\n› /afk ⇨ Установить режим ''Афк''\n› /setwarp ⇨ Установить точку варпа\n› /delwarp ⇨ Удалить точку варпа\n› /repair ⇨ Починить вещь в руке"
+  },
   { name: "Принц", price: 329, color: "from-yellow-600 to-yellow-800" },
   { name: "Князь", price: 549, color: "from-red-600 to-red-800" },
   { name: "Герцог", price: 999, color: "from-amber-600 to-amber-900" },
