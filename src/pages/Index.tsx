@@ -6,6 +6,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogDescription } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 const privileges = [
   { name: "Барон", price: 10, color: "from-gray-600 to-gray-800" },
@@ -126,6 +127,15 @@ export default function Index() {
   const [isVisible, setIsVisible] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [visitorsCount] = useState(15847);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      setMobileMenuOpen(false);
+    }
+  };
 
   useEffect(() => {
     setIsVisible(true);
@@ -156,6 +166,85 @@ export default function Index() {
       />
       
       <div className="relative z-10">
+        <nav className="sticky top-0 z-40 bg-black/80 backdrop-blur-md border-b border-primary/30">
+          <div className="container mx-auto px-4 py-4">
+            <div className="flex items-center justify-between">
+              <h2 className="minecraft-text text-2xl font-black text-primary">ROOMTIME</h2>
+              
+              <div className="hidden md:flex gap-6">
+                <button onClick={() => scrollToSection('privileges')} className="text-white hover:text-primary transition-colors font-semibold">
+                  Привилегии
+                </button>
+                <button onClick={() => scrollToSection('gallery')} className="text-white hover:text-primary transition-colors font-semibold">
+                  Галерея
+                </button>
+                <button onClick={() => scrollToSection('testimonials')} className="text-white hover:text-primary transition-colors font-semibold">
+                  Отзывы
+                </button>
+                <button onClick={() => scrollToSection('rules')} className="text-white hover:text-primary transition-colors font-semibold">
+                  Правила
+                </button>
+              </div>
+              
+              <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+                <SheetTrigger asChild className="md:hidden">
+                  <Button variant="ghost" size="icon" className="text-white">
+                    <Icon name="Menu" size={24} />
+                  </Button>
+                </SheetTrigger>
+                <SheetContent side="right" className="bg-gradient-to-b from-[#1a1f2c] to-[#2C2C2C] border-primary/30">
+                  <div className="flex flex-col gap-6 mt-8">
+                    <h3 className="minecraft-text text-3xl font-black text-primary mb-4">МЕНЮ</h3>
+                    <button 
+                      onClick={() => scrollToSection('privileges')} 
+                      className="text-left text-xl text-white hover:text-primary transition-colors font-semibold flex items-center gap-3"
+                    >
+                      <Icon name="Crown" size={24} className="text-primary" />
+                      Привилегии
+                    </button>
+                    <button 
+                      onClick={() => scrollToSection('gallery')} 
+                      className="text-left text-xl text-white hover:text-primary transition-colors font-semibold flex items-center gap-3"
+                    >
+                      <Icon name="Image" size={24} className="text-primary" />
+                      Галерея
+                    </button>
+                    <button 
+                      onClick={() => scrollToSection('testimonials')} 
+                      className="text-left text-xl text-white hover:text-primary transition-colors font-semibold flex items-center gap-3"
+                    >
+                      <Icon name="MessageSquare" size={24} className="text-primary" />
+                      Отзывы
+                    </button>
+                    <button 
+                      onClick={() => scrollToSection('rules')} 
+                      className="text-left text-xl text-white hover:text-primary transition-colors font-semibold flex items-center gap-3"
+                    >
+                      <Icon name="ScrollText" size={24} className="text-primary" />
+                      Правила
+                    </button>
+                    
+                    <div className="border-t border-primary/30 pt-6 mt-4">
+                      <Button asChild className="w-full bg-primary hover:bg-primary/90 mb-3">
+                        <a href="https://t.me/HollyFunServer" target="_blank" rel="noopener noreferrer">
+                          <Icon name="Send" size={20} className="mr-2" />
+                          Telegram
+                        </a>
+                      </Button>
+                      <Button asChild className="w-full bg-[#5865F2] hover:bg-[#4752C4]">
+                        <a href="https://discord.gg/WBrBCpUbkc" target="_blank" rel="noopener noreferrer">
+                          <Icon name="MessageCircle" size={20} className="mr-2" />
+                          Discord
+                        </a>
+                      </Button>
+                    </div>
+                  </div>
+                </SheetContent>
+              </Sheet>
+            </div>
+          </div>
+        </nav>
+        
         <section className="container mx-auto px-4 py-16 text-center">
           <div className="max-w-5xl mx-auto">
             <h1 className="minecraft-text text-7xl md:text-9xl font-black text-[#FF0000] mb-8 animate-fade-in text-outline">
@@ -303,11 +392,19 @@ export default function Index() {
                     </div>
                     
                     <Button 
+                      asChild
                       className="w-full bg-primary hover:bg-primary/90 text-white font-bold text-lg py-6"
                       disabled={!nickname}
                     >
-                      <Icon name="CreditCard" size={24} className="mr-2" />
-                      Перейти к оплате
+                      <a 
+                        href="https://funpay.com/users/16724676/" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className={!nickname ? 'pointer-events-none opacity-50' : ''}
+                      >
+                        <Icon name="CreditCard" size={24} className="mr-2" />
+                        Перейти к оплате
+                      </a>
                     </Button>
                     
                     <p className="text-xs text-center text-gray-400">
