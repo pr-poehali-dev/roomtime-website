@@ -124,14 +124,29 @@ export default function Index() {
   const [selectedPrivilege, setSelectedPrivilege] = useState<typeof privileges[0] | null>(null);
   const [nickname, setNickname] = useState("");
   const [isVisible, setIsVisible] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+  const [visitorsCount] = useState(15847);
 
   useEffect(() => {
     setIsVisible(true);
     const interval = setInterval(() => {
       setOnlinePlayers(prev => Math.min(maxPlayers, Math.max(10, prev + Math.floor(Math.random() * 7) - 3)));
     }, 5000);
-    return () => clearInterval(interval);
+    
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 400);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, [maxPlayers]);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#1a1f2c] via-[#2C2C2C] to-[#1a1f2c]">
@@ -416,6 +431,13 @@ export default function Index() {
 
         <footer className="container mx-auto px-4 py-12 text-center">
           <Card className="bg-black/60 backdrop-blur-md border-primary/30 max-w-4xl mx-auto p-8">
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <Icon name="Eye" size={20} className="text-primary" />
+              <p className="text-lg text-gray-300">
+                Посетителей сайта: <span className="font-black text-primary minecraft-text">{visitorsCount.toLocaleString()}</span>
+              </p>
+            </div>
+            
             <p className="text-2xl font-bold text-white mb-6">
               HollyFun - Лучший анархический сервер
             </p>
@@ -449,6 +471,16 @@ export default function Index() {
             </p>
           </Card>
         </footer>
+        
+        {showScrollTop && (
+          <Button
+            onClick={scrollToTop}
+            className="fixed bottom-8 right-8 z-50 bg-primary hover:bg-primary/90 text-white p-4 rounded-full shadow-2xl animate-bounce-in"
+            size="icon"
+          >
+            <Icon name="ArrowUp" size={24} />
+          </Button>
+        )}
       </div>
     </div>
   );
