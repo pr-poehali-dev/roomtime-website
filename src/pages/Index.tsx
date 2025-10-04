@@ -57,7 +57,12 @@ const privileges = [
     color: "from-orange-600 to-orange-800",
     description: "⚕ Префикс в чате и табе: [Титан] ВашНик\n› /kit Титан ⇨ Получить набор Титана\n› /jump ⇨ Телепортация на блок взгляда\n› /afk ⇨ Установить режим ''Афк''\n› /setwarp ⇨ Установить точку варпа\n› /delwarp ⇨ Удалить точку варпа\n› /repair ⇨ Починить вещь в руке"
   },
-  { name: "Принц", price: 329, color: "from-yellow-600 to-yellow-800" },
+  { 
+    name: "Принц", 
+    price: 329, 
+    color: "from-yellow-600 to-yellow-800",
+    description: "⚕ Префикс в чате и табе: [Принц] ВашНик\n› /kit Принц ⇨ Получить набор Принца\n› /smithtable ⇨ Открыть стол Кузнеца\n› /stonecutter ⇨ Открыть Камнерез\n› /grindstone ⇨ Открыть Точило\n\nПрочее:\nТочек домов: 5\nРегионов (Гриф): 7 по 250,000 блоков\nРегионов (Анка): 9 блоков\nСлотов на Аукционе: 14\nЗадержка телепорта: 3 сек\n✔ Возможности привилегии ниже"
+  },
   { name: "Князь", price: 549, color: "from-red-600 to-red-800" },
   { name: "Герцог", price: 999, color: "from-amber-600 to-amber-900" },
   { name: "Спонсор", price: 1850, color: "from-emerald-500 to-emerald-800" },
